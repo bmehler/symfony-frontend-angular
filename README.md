@@ -9,8 +9,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Prerequisites
 
 ```js
-git clone
-cd Directory
+git clone https://github.com/bmehler/symfony-frontend-angular.git
+cd <Directory>
 npm install
 ```
 
