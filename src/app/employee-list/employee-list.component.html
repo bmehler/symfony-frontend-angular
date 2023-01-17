@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>people</mat-icon>
+    </button>
+    <span>My Employee Symfony App</span>
+</mat-toolbar>
+<es-messages></es-messages>
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Input" #input>
+</mat-form-field>
+<mat-table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="firstname">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Firstname </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.firstname }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="surname">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Surname </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.surname }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Position </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.position }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="salary">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Salary </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.salary | currency:'EUR' }} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row; let element">
+            <button mat-raised-button color="primary" routerLink="/employee-edit/{{ element.id }}" ><mat-icon>border_color</mat-icon> Edit</button>
+            <button mat-raised-button color="accent" (click)="deleteDialog(element.id)"><mat-icon>delete</mat-icon> Delete</button>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+</mat-paginator>
+<div>
+    <button routerLink="/employee-add" mat-raised-button class="add" color="primary">
+        <mat-icon>person_add</mat-icon> Add new
+    </button>
+</div>
+<router-outlet></router-outlet>

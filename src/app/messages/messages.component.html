@@ -1,0 +1,5 @@
+<div *ngIf="messageService.message.length">
+    <div *ngFor='let message of messageService.message'>
+        <button mat-raised-button disabled class="message add">{{ message}}</button>
+    </div>
+</div>

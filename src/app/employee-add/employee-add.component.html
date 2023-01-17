@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Add Employee</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="addForm">
+            <form [formGroup]="form" (ngSubmit)="saveDetails()">
+                <mat-form-field appearance="standard">
+                    <mat-label>Firstname</mat-label>
+                    <input matInput placeholder="Firstname" formControlName="firstname" #firstnameInput>
+                    <mat-hint>Mini character 20: {{ surnameInput.value.length }}/20</mat-hint>
+                    <mat-error *ngIf="form.get('firstname')!.hasError('required')">Please enter your firstname</mat-error>
+                </mat-form-field><br>
+                <mat-form-field appearance="standard">
+                    <mat-label>Surname</mat-label>
+                    <input matInput placeholder="Surname" formControlName="surname" #surnameInput>
+                    <mat-error *ngIf="form.get('surname')!.hasError('required')">Please enter your surname</mat-error>
+                    <mat-hint>Mini character 20: {{ surnameInput.value.length }}/20</mat-hint>
+                </mat-form-field><br>
+                <mat-form-field appearance="standard">
+                    <mat-label>Position</mat-label>
+                    <input matInput placeholder="Position" formControlName="position" #positionInput>
+                    <mat-hint>Mini character 20: {{ positionInput.value.length }}/20</mat-hint>
+                    <mat-error *ngIf="form.get('position')!.hasError('required')">Please enter your job position</mat-error>
+                </mat-form-field><br>
+                <mat-form-field appearance="standard">
+                    <mat-label>Salary</mat-label>
+                    <input matInput placeholder="Salary" formControlName="salary" #salaryInput>
+                    <mat-hint>Mini character 20: {{ salaryInput.value.length }}/20</mat-hint>
+                    <mat-error *ngIf="form.get('salary')!.hasError('required')">Please enter your monthly salary</mat-error>
+                </mat-form-field><br>
+                <button mat-raised-button type="submit" class="add" color="primary">Add</button>
+                <div>{{ form.value | json }}</div>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>
